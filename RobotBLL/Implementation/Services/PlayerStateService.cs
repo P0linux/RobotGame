@@ -29,5 +29,10 @@ namespace RobotBLL.Implementation.Services
         {
             return playerState.GameRobot.BatteryCharge;
         }
+
+        public void SaveState()
+        {
+            playerState.GameRobot.SaveState();
+        }
     }
 }

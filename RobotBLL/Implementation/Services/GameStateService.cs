@@ -29,5 +29,35 @@ namespace RobotBLL.Implementation.Services
         {
             gameState.TotalCurrentPrice += price;
         }
+
+        public (int, int) GetRobotCoordinates()
+        {
+            for (int i = 0; i<gameState.GameField.x; i++)
+            {
+                for (int j=0; j<gameState.GameField.y; j++)
+                {
+                    if (gameState.GameField.Cells[i, j].CurrentState == Enums.CellState.Robot) 
+                        return (i, j);
+                }
+            }
+            return (0, 0);
+        }
+
+        public (int, int) GetFieldDimension()
+        {
+            return (gameState.GameField.x, gameState.GameField.y);
+        }
+
+        public void MoveUpdateField((int, int) newCoordinates)
+        {
+            (int, int) oldCoordinates = GetRobotCoordinates();
+            for (int i = 0; i < gameState.GameField.x; i++)
+            {
+                for (int j = 0; j < gameState.GameField.y; j++)
+                {
+                    
+                }
+            }
+        }
     }
 }

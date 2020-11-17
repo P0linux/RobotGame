@@ -7,14 +7,15 @@ using System.Text;
 
 namespace RobotBLL.Implementation.Services
 {
+    
     class CommandController
     {
         Command MoveCommand;
         Command PickCargoCommand;
 
-        public void SetMoveCommand()
+        public void SetMoveCommand(IGameStateService gameService, IPlayerStateService playerService)
         {
-            MoveCommand = new MoveCommand();
+            MoveCommand = new MoveCommand(gameService, playerService);
         }
 
         public void SetPickCommand()
@@ -22,9 +23,9 @@ namespace RobotBLL.Implementation.Services
             PickCargoCommand = new PickCargoCommand();
         }
 
-        public void Move()
+        public void Move(Enums.MoveParameter parameter)
         {
-            MoveCommand.Execute();
+            MoveCommand.Execute(parameter);
         }
 
         public void MoveUndo()

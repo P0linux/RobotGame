@@ -4,7 +4,13 @@ using System.Text;
 
 namespace RobotBLL.Abstraction
 {
-    class IGameStateService
+    interface IGameStateService
     {
+        void ReduceCargoAmount();
+        void IncreaseCargoAmount();
+        void IncreaseTotalPrice(float price);
+        (int, int) GetRobotCoordinates();
+        (int, int) GetFieldDimension();
+
     }
 }

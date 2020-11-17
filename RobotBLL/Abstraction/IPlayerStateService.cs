@@ -4,7 +4,11 @@ using System.Text;
 
 namespace RobotBLL.Abstraction
 {
-    class IPlayerStateService
+    public interface IPlayerStateService
     {
+        void reduceBatteryCharge(int percents);
+        void IncreaseBatteryCharge(int percents);
+        int GetBatteryCharge();
+        void SaveState();
     }
 }
