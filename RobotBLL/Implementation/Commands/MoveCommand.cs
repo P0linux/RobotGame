@@ -8,9 +8,9 @@ namespace RobotBLL.Implementation.Commands
 {
     class MoveCommand: Command
     {
-        IChangeGameStateService gameState;
-        IChangePlayerStateService playerState;
-        public MoveCommand(IChangeGameStateService changeGameState, IChangePlayerStateService changePlayerState)
+        IGameStateService gameState;
+        IPlayerStateService playerState;
+        public MoveCommand(IGameStateService changeGameState, IPlayerStateService changePlayerState)
         {
             gameState = changeGameState;
             playerState = changePlayerState;

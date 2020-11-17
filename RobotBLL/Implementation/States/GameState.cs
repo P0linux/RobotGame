@@ -7,7 +7,7 @@ namespace RobotBLL.Implementation.States
 {
     class GameState
     {
-        public int CargoAmount { get; set; }
+        public int CargoAmount { get; set; } = 0;
         public float TotalCurrentPrice { get; set; } = 0;
         public bool IsEnded { get; set; } = false;
         public Field GameField { get; set; }

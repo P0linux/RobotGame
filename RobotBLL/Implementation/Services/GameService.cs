@@ -69,6 +69,7 @@ namespace RobotBLL.Implementation.Services
                                          double maxWeight, bool isDecoding)
         {
             Field field = CreateField(x, y);
+            field.Cells[0, 0].CurrentState = Cell.CellState.Robot;
             List<Cargo> cargos = CreateCargos(cargoAmount, maxPrice, maxWeight, isDecoding);
             List<Cargo> toxicCargos = CreateToxicCargos(toxicCargoAmount, maxPrice, maxWeight, isDecoding);
             PlaceAllCargos(cargos, toxicCargos, x, y, field);

@@ -6,11 +6,11 @@ using System.Text;
 
 namespace RobotBLL.Implementation.Services
 {
-    class ChangePlayerStateService: IChangePlayerStateService
+    class PlayerStateService: IPlayerStateService
     {
         PlayerState playerState;
 
-        public ChangePlayerStateService(PlayerState playerState)
+        public PlayerStateService(PlayerState playerState)
         {
             this.playerState = playerState;
         }
@@ -29,7 +29,5 @@ namespace RobotBLL.Implementation.Services
         {
             return playerState.GameRobot.BatteryCharge;
         }
-
-
     }
 }

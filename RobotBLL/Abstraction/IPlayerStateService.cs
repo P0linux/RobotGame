@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RobotBLL.Abstraction
 {
-    class IChangeGameStateService
+    class IPlayerStateService
     {
     }
 }
