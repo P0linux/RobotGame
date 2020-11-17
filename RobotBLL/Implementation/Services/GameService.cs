@@ -12,7 +12,7 @@ namespace RobotBLL.Implementation.Services
     class GameService: IGameService
     {
         Random random = new Random();
-        public Field CreateField(int x, int y)
+        private Field CreateField(int x, int y)
         {
             Field field = new Field(x, y);
             for (int i = 0; i < x; i++)
@@ -25,13 +25,13 @@ namespace RobotBLL.Implementation.Services
             return field;
         }
 
-        public void PlaceCargo(Cargo cargo, Cell cell)
+        private void PlaceCargo(Cargo cargo, Cell cell)
         {
             cell.Cargo = cargo;
             cell.CurrentState = Cell.CellState.Cargo;
         }
 
-        public void PlaceAllCargos(List<Cargo> cargos, List<Cargo> toxicCargos, int x, int y, Field field)
+        private void PlaceAllCargos(List<Cargo> cargos, List<Cargo> toxicCargos, int x, int y, Field field)
         {
             foreach (Cargo cargo in cargos)
             {
@@ -49,7 +49,7 @@ namespace RobotBLL.Implementation.Services
             }
         }
 
-        public List<Cargo> CreateCargos(int cargoAmount, double maxPrice, double maxWeight, bool isDecoding)
+        private List<Cargo> CreateCargos(int cargoAmount, double maxPrice, double maxWeight, bool isDecoding)
         {
             List<Cargo> cargos = new List<Cargo>(cargoAmount);
             cargos = cargos.Select(c => c = new Cargo(random.NextDouble() * maxPrice, random.NextDouble() * maxWeight, isDecoding))
@@ -57,7 +57,7 @@ namespace RobotBLL.Implementation.Services
             return cargos;
         }
 
-        public List<Cargo> CreateToxicCargos(int cargoAmount, double maxPrice, double maxWeight, bool isDecoding)
+        private List<Cargo> CreateToxicCargos(int cargoAmount, double maxPrice, double maxWeight, bool isDecoding)
         {
             List<Cargo> cargos = CreateCargos(cargoAmount, maxPrice, maxWeight, isDecoding);
             cargos = cargos.Select(c => c = new ToxicCargo(c))
