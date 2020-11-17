@@ -23,7 +23,7 @@ namespace RobotBLL.Implementation.Commands
             (int, int) newCoordinates = CheckParameter(parameter);
             playerState.reduceBatteryCharge(moveCharge);
             playerState.SaveState();
-            playerState.
+            gameState.MoveUpdateField(newCoordinates);
         }
 
         public void Undo()

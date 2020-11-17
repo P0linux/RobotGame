@@ -11,6 +11,7 @@ namespace RobotBLL.Abstraction
         void IncreaseTotalPrice(float price);
         (int, int) GetRobotCoordinates();
         (int, int) GetFieldDimension();
+        void MoveUpdateField((int, int) newCoordinates);
 
     }
 }
