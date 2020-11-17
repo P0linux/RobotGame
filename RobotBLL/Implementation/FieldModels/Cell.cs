@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.FieldModels
 {
-    class Cell
+    public class Cell
     {
         public Enums.CellState PreviousState { get; set; } = Enums.CellState.Empty;
         public Enums.CellState CurrentState { get; set; } = Enums.CellState.Empty;

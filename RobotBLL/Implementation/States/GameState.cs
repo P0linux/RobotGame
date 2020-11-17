@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.States
 {
-    class GameState
+    public class GameState
     {
         public int CargoAmount { get; set; } = 0;
         public float TotalCurrentPrice { get; set; } = 0;

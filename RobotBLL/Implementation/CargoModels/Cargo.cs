@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.CargoModels
 {
-    class Cargo
+    public class Cargo
     {
         public double Price { get; set; }
         public double Weight { get; set; }

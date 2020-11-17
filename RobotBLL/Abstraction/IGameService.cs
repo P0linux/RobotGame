@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RobotBLL.Abstraction
 {
-    interface IGameService
+    public interface IGameService
     {
         GameState CreateGameState(int x, int y, int cargoAmount, int toxicCargoAmount, double maxPrice,
                                          double maxWeight, bool isDecoding);

@@ -26,6 +26,11 @@ namespace RobotBLL.Implementation.Commands
             gameState.MoveUpdateField(newCoordinates);
         }
 
+        public void Execute()
+        {
+            
+        }
+
         public void Undo()
         {
 

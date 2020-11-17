@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.States
 {
-    class PlayerState
+    public class PlayerState
     {
         public Robot GameRobot { get; set; }
 

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.Services
 {
-    class PlayerStateService: IPlayerStateService
+    public class PlayerStateService: IPlayerStateService
     {
         PlayerState playerState;
 

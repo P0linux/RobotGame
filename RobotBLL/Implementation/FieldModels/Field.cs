@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.FieldModels
 {
-    class Field
+    public class Field
     {
         public int x { get; set; }
         public int y { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RobotBLL.Abstraction
 {
-    interface IGameStateService
+    public interface IGameStateService
     {
         void ReduceCargoAmount();
         void IncreaseCargoAmount();

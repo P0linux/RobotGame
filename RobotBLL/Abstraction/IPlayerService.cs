@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RobotBLL.Abstraction
 {
-    interface IPlayerService
+    public interface IPlayerService
     {
         PlayerState CreatePlayerState(RobotModel model);
     }

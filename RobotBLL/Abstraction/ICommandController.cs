@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RobotBLL.Abstraction
 {
-    interface ICommandController
+    public interface ICommandController
     {
         void SetMoveCommand(IGameStateService gameService, IPlayerStateService playerService);
         void SetPickCommand();

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation
 {
-    class GameController
+    public class GameController
     {
         GameState gameState;
         PlayerState playerState;
@@ -40,13 +40,13 @@ namespace RobotBLL.Implementation
             commandController.SetPickCommand();
         }
 
-        private void CreateGameState(int x, int y, int cargoAmount, int toxicCargoAmount, 
+        public void CreateGameState(int x, int y, int cargoAmount, int toxicCargoAmount, 
                                      double maxPrice, double maxWeight, bool isDecoding)
         {
             gameState = gameService.CreateGameState(x, y, cargoAmount, toxicCargoAmount, maxPrice, maxWeight, isDecoding);
         }
 
-        private void CreatePlayerState(int number, string name)
+        public void CreatePlayerState(int number, string name)
         {
             RobotModel robotModel = new RobotModel(number, name);
             playerState = playerService.CreatePlayerState(robotModel);

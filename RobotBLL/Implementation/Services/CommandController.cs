@@ -8,7 +8,7 @@ using System.Text;
 namespace RobotBLL.Implementation.Services
 {
     
-    class CommandController
+    public class CommandController: ICommandController
     {
         Command MoveCommand;
         Command PickCargoCommand;

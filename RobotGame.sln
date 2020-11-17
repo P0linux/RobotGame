@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotBLL", "RobotBLL\RobotBLL.csproj", "{75BAF916-6644-4605-8A0C-69683F598D4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotBLL", "RobotBLL\RobotBLL.csproj", "{75BAF916-6644-4605-8A0C-69683F598D4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotPL", "RobotPL\RobotPL.csproj", "{08958946-AA81-4C46-8783-0297317FF7DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{75BAF916-6644-4605-8A0C-69683F598D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75BAF916-6644-4605-8A0C-69683F598D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75BAF916-6644-4605-8A0C-69683F598D4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08958946-AA81-4C46-8783-0297317FF7DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08958946-AA81-4C46-8783-0297317FF7DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08958946-AA81-4C46-8783-0297317FF7DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08958946-AA81-4C46-8783-0297317FF7DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,7 +9,7 @@ using RobotBLL.Implementation.States;
 
 namespace RobotBLL.Implementation.Services
 {
-    class PlayerService: IPlayerService
+    public class PlayerService: IPlayerService
     {
         public Dictionary<string, double> ChoiceProbability { get; set; } = new Dictionary<string, double>
         {
