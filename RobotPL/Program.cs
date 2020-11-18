@@ -15,7 +15,7 @@ namespace RobotPL
             gameController.CreateGameState(3, 3, 1, 0, 10, 10, false);
             gameController.Move(RobotBLL.Implementation.Enums.MoveParameter.Down);
             var state = gameController.GetGameState();
-            Console.WriteLine(state.GameField);
+            Console.WriteLine(state);
         }
     }
 }

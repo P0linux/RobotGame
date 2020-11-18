@@ -7,9 +7,9 @@ namespace RobotBLL.Abstraction
 {
     public interface ICommandController
     {
-        void SetMoveCommand(IGameStateService gameService, IPlayerStateService playerService);
-        void SetPickCommand();
-        void Move(MoveParameter parameter);
+        void SetMoveCommand(Command command);
+        void SetPickCommand(Command command);
+        void Move();
         void MoveUndo();
         void PickCargo();
         void PickCargoUndo();

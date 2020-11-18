@@ -14,12 +14,12 @@ namespace RobotBLL.Implementation.Commands
 
         }
 
-        public void Execute()
+        public override void Execute()
         {
 
         }
 
-        public void Undo()
+        public override void Undo()
         {
 
         }

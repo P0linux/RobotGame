@@ -13,19 +13,19 @@ namespace RobotBLL.Implementation.Services
         Command MoveCommand;
         Command PickCargoCommand;
 
-        public void SetMoveCommand(IGameStateService gameService, IPlayerStateService playerService)
+        public void SetMoveCommand(Command moveCommand)
         {
-            MoveCommand = new MoveCommand(gameService, playerService);
+            MoveCommand = moveCommand;
         }
 
-        public void SetPickCommand()
+        public void SetPickCommand(Command pickCargoCommand)
         {
-            PickCargoCommand = new PickCargoCommand();
+            PickCargoCommand = pickCargoCommand;
         }
 
-        public void Move(Enums.MoveParameter parameter)
+        public void Move()
         {
-            MoveCommand.Execute(parameter);
+            MoveCommand.Execute();
         }
 
         public void MoveUndo()

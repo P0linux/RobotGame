@@ -6,9 +6,8 @@ namespace RobotBLL.Abstraction
 {
     public abstract class Command
     {
-        public void Execute(Implementation.Enums.MoveParameter parameter) { }
-        public void Execute() { }
+        public abstract void Execute();
 
-        public void Undo() { }
+        public abstract void Undo();
     }
 }

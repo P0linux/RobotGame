@@ -1,4 +1,6 @@
 ﻿using RobotBLL.Abstraction;
+using RobotBLL.Implementation.Commands;
+using RobotBLL.Implementation.Enums;
 using RobotBLL.Implementation.RobotModels;
 using RobotBLL.Implementation.Services;
 using RobotBLL.Implementation.States;
@@ -25,19 +27,12 @@ namespace RobotBLL.Implementation
             this.playerService = playerService;
             this.commandController = commandController;
             InitializeServices();
-            InitializeCommands();
         }
 
         private void InitializeServices()
         {
             gameStateService = new GameStateService(gameState);
             playerStateService = new PlayerStateService(playerState);
-        }
-
-        private void InitializeCommands()
-        {    
-            commandController.SetMoveCommand(gameStateService, playerStateService);
-            commandController.SetPickCommand();
         }
 
         public void CreateGameState(int x, int y, int cargoAmount, int toxicCargoAmount, 
@@ -62,9 +57,22 @@ namespace RobotBLL.Implementation
             return playerState;
         }
 
-        public void Move(Enums.MoveParameter moveParameter)
+        private void SetMoveCommand(MoveParameter parameter)
         {
-            commandController.Move(moveParameter);
+            Command moveCommand = new MoveCommand(gameStateService, playerStateService, parameter);
+            commandController.SetMoveCommand(moveCommand);
+        }
+
+        private void SetPickCommand()
+        {
+            Command pickCommand = new PickCargoCommand();
+            commandController.SetPickCommand(pickCommand);
+        }
+
+        public void Move(MoveParameter moveParameter)
+        {
+            SetMoveCommand(moveParameter);
+            commandController.Move();
         }
 
         public void MoveUndo()

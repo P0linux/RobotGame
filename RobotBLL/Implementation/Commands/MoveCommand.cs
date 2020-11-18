@@ -1,5 +1,6 @@
 ﻿using RobotBLL.Abstraction;
 using RobotBLL.Exceptions;
+using RobotBLL.Implementation.Enums;
 using RobotBLL.Implementation.RobotModels;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,15 @@ namespace RobotBLL.Implementation.Commands
         int moveCharge = 10;
         IGameStateService gameState;
         IPlayerStateService playerState;
-        public MoveCommand(IGameStateService changeGameState, IPlayerStateService changePlayerState)
+        MoveParameter parameter;
+        public MoveCommand(IGameStateService changeGameState, IPlayerStateService changePlayerState, MoveParameter parameter)
         {
             gameState = changeGameState;
             playerState = changePlayerState;
+            this.parameter = parameter;
         }
 
-        public void Execute(Enums.MoveParameter parameter)
+        public override void Execute()
         {
             (int, int) newCoordinates = CheckParameter(parameter);
             playerState.reduceBatteryCharge(moveCharge);
@@ -26,28 +29,23 @@ namespace RobotBLL.Implementation.Commands
             gameState.MoveUpdateField(newCoordinates);
         }
 
-        public void Execute()
-        {
-            
-        }
-
-        public void Undo()
+        public override void Undo()
         {
 
         }
 
-        private (int, int) CheckParameter(Enums.MoveParameter param)
+        private (int, int) CheckParameter(MoveParameter param)
         {
             (int, int) coordinates = gameState.GetRobotCoordinates();
             switch (param)
             {
-                case Enums.MoveParameter.Up:
+                case MoveParameter.Up:
                     return CanMoveUp(coordinates);
-                case Enums.MoveParameter.Down:
+                case MoveParameter.Down:
                     return CanMoveDown(coordinates);
-                case Enums.MoveParameter.Left:
+                case MoveParameter.Left:
                     return CanMoveLeft(coordinates);
-                case Enums.MoveParameter.Right:
+                case MoveParameter.Right:
                     return CanMoveRight(coordinates);
                 default:
                     return (0, 0);
