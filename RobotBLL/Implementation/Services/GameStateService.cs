@@ -50,6 +50,11 @@ namespace RobotBLL.Implementation.Services
             return (gameState.GameField.x, gameState.GameField.y);
         }
 
+        public void UndoUpdateField()
+        {
+            gameState.GameField.Cells = gameState.GameField.PreviousState;
+        }
+
         public void MoveUpdateField((int, int) newCoordinates)
         {
             (int, int) oldCoordinates = GetRobotCoordinates();

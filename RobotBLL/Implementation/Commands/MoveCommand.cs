@@ -31,7 +31,7 @@ namespace RobotBLL.Implementation.Commands
 
         public override void Undo()
         {
-
+            playerState.
         }
 
         private (int, int) CheckParameter(MoveParameter param)

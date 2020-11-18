@@ -20,11 +20,6 @@ namespace RobotBLL.Implementation.Services
             playerState.GameRobot.BatteryCharge -= percents;
         }
 
-        public void IncreaseBatteryCharge(int percents)
-        {
-            playerState.GameRobot.BatteryCharge += percents;
-        }
-
         public int GetBatteryCharge()
         {
             return playerState.GameRobot.BatteryCharge;
@@ -33,6 +28,11 @@ namespace RobotBLL.Implementation.Services
         public void SaveState()
         {
             playerState.GameRobot.SaveState();
+        }
+
+        public void RestoreState()
+        {
+            playerState.GameRobot.RestoreState();
         }
     }
 }

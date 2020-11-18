@@ -7,7 +7,6 @@ namespace RobotBLL.Implementation.FieldModels
 {
     public class Cell
     {
-        public Enums.CellState PreviousState { get; set; } = Enums.CellState.Empty;
         public Enums.CellState CurrentState { get; set; } = Enums.CellState.Empty;
         public Cargo Cargo { get; set; }
     }
