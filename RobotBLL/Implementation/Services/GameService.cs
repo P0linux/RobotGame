@@ -52,7 +52,7 @@ namespace RobotBLL.Implementation.Services
         private List<Cargo> CreateCargos(int cargoAmount, double maxPrice, double maxWeight, bool isDecoding)
         {
             List<Cargo> cargos = new List<Cargo>(cargoAmount);
-            for (int i = 0; i<=cargoAmount; i++)
+            for (int i = 0; i<cargoAmount; i++)
             {
                 cargos.Add(new Cargo(random.NextDouble() * maxPrice, random.NextDouble() * maxWeight, isDecoding));
             }

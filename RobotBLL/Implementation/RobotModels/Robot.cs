@@ -8,7 +8,7 @@ namespace RobotBLL.Implementation.RobotModels
     public abstract class Robot
     {
         public RobotModel Model { get; set; }
-        public int BatteryCharge { get; set; }
+        public int BatteryCharge { get; set; } = 100;
         public float Carrying { get; set; }
         public int DecodingProbability { get; set; }
 

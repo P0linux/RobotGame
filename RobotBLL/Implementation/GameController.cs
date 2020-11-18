@@ -26,10 +26,9 @@ namespace RobotBLL.Implementation
             this.gameService = gameSevice;
             this.playerService = playerService;
             this.commandController = commandController;
-            InitializeServices();
         }
 
-        private void InitializeServices()
+        public void InitializeServices()
         {
             gameStateService = new GameStateService(gameState);
             playerStateService = new PlayerStateService(playerState);
@@ -39,12 +38,14 @@ namespace RobotBLL.Implementation
                                      double maxPrice, double maxWeight, bool isDecoding)
         {
             gameState = gameService.CreateGameState(x, y, cargoAmount, toxicCargoAmount, maxPrice, maxWeight, isDecoding);
+            gameStateService = new GameStateService(gameState);
         }
 
         public void CreatePlayerState(int number, string name)
         {
             RobotModel robotModel = new RobotModel(number, name);
             playerState = playerService.CreatePlayerState(robotModel);
+            playerStateService = new PlayerStateService(playerState);
         }
 
         public GameState GetGameState()
