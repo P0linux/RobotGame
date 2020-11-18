@@ -28,12 +28,6 @@ namespace RobotBLL.Implementation
             this.commandController = commandController;
         }
 
-        public void InitializeServices()
-        {
-            gameStateService = new GameStateService(gameState);
-            playerStateService = new PlayerStateService(playerState);
-        }
-
         public void CreateGameState(int x, int y, int cargoAmount, int toxicCargoAmount, 
                                      double maxPrice, double maxWeight, bool isDecoding)
         {

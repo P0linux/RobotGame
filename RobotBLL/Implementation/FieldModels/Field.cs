@@ -9,6 +9,7 @@ namespace RobotBLL.Implementation.FieldModels
         public int x { get; set; }
         public int y { get; set; }
         public Cell[,] Cells { get; set; }
+        public Cell[,] PreviousState { get; set; }
 
         public Field(int x, int y)
         {
