@@ -12,6 +12,7 @@ namespace RobotBLL.Abstraction
         (int, int) GetRobotCoordinates();
         (int, int) GetFieldDimension();
         void MoveUpdateField((int, int) newCoordinates);
+        void UndoUpdateField();
 
     }
 }
