@@ -1,7 +1,9 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using RobotBLL.Abstraction;
 using RobotBLL.Implementation;
 using RobotBLL.Implementation.Services;
+using RobotPL.Abstract;
 
 namespace RobotPL
 {
@@ -9,13 +11,28 @@ namespace RobotPL
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            GameController gameController = new GameController(new GameService(), new PlayerService(), new CommandController());
-            gameController.CreatePlayerState(1, "Polina");
-            gameController.CreateGameState(3, 3, 1, 0, 10, 10, false);
-            gameController.Move(RobotBLL.Implementation.Enums.MoveParameter.Down);
-            var state = gameController.GetGameState();
-            Console.WriteLine(state);
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+            var serviceProvider = services.BuildServiceProvider();
+            var controller = serviceProvider.GetService<Controller>();
+            controller.StartGame();
+            //Console.WriteLine("Hello World!");
+            //GameController gameController = new GameController(new GameService(), new PlayerService(), new CommandController());
+            //gameController.CreatePlayerState(1, "Polina");
+            //gameController.CreateGameState(3, 3, 1, 0, 10, 10, false);
+            //gameController.Move(RobotBLL.Implementation.Enums.MoveParameter.Down);
+            //var state = gameController.GetGameState();
+            //Console.WriteLine(state);
+        }
+
+        private static void ConfigureServices(IServiceCollection services)
+        {
+            services.AddTransient<ICommandController, CommandController>();
+            services.AddTransient<IGameService, GameService>();
+            services.AddTransient<IPlayerService, PlayerService>();
+            services.AddTransient<IGameController, GameController>();
+            services.AddTransient<IView, View>();
+            services.AddTransient<Controller, Controller>();
         }
     }
 }

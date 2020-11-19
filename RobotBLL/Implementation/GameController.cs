@@ -11,7 +11,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation
 {
-    public class GameController
+    public class GameController: IGameController
     {
         GameState gameState;
         PlayerState playerState;
