@@ -8,10 +8,12 @@ namespace RobotBLL.Implementation.Commands
 {
     class PickCargoCommand: Command
     {
-
-        public PickCargoCommand()
+        IGameStateService gameStateService;
+        IPlayerStateService playerStateService;
+        public PickCargoCommand(IGameStateService changeGameState, IPlayerStateService changePlayerState)
         {
-
+            gameStateService = changeGameState;
+            playerStateService = changePlayerState;
         }
 
         public override void Execute()
@@ -21,7 +23,8 @@ namespace RobotBLL.Implementation.Commands
 
         public override void Undo()
         {
-
+            playerStateService.RestoreState();
+            gameStateService.UndoUpdateField();
         }
     }
 }
