@@ -27,12 +27,12 @@ namespace RobotBLL.Implementation.Services
 
         public void SaveState()
         {
-            playerState.GameRobot.SaveState();
+            playerState.History.History.Push(playerState.GameRobot.SaveState());
         }
 
         public void RestoreState()
         {
-            playerState.GameRobot.RestoreState();
+            playerState.GameRobot.RestoreState(playerState.History.History.Pop());
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using RobotBLL.Abstraction;
 using RobotBLL.Implementation.States;
+using RobotBLL.Implementation.Memento;
 
 namespace RobotBLL.Implementation.Services
 {
@@ -39,9 +40,9 @@ namespace RobotBLL.Implementation.Services
             return CreateRobot(model, creator);
         }
 
-        public PlayerState CreatePlayerState(RobotModel model)
+        public PlayerState CreatePlayerState(RobotModel model, GameHistory history)
         {
-            return new PlayerState(ChooseRobot(model));
+            return new PlayerState(ChooseRobot(model), history);
         }
         private RobotCreator ChooseCreator(string creator)
         {

@@ -9,5 +9,6 @@ namespace RobotBLL.Abstraction
         void reduceBatteryCharge(int percents);
         int GetBatteryCharge();
         void SaveState();
+        void RestoreState();
     }
 }

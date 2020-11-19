@@ -1,4 +1,5 @@
-﻿using RobotBLL.Implementation.RobotModels;
+﻿using RobotBLL.Implementation.Memento;
+using RobotBLL.Implementation.RobotModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,9 +10,12 @@ namespace RobotBLL.Implementation.States
     {
         public Robot GameRobot { get; set; }
 
-        public PlayerState(Robot robot)
+        public GameHistory History { get; set; }
+
+        public PlayerState(Robot robot, GameHistory gameHistory)
         {
             GameRobot = robot;
+            History = gameHistory;
         }
     }
 }

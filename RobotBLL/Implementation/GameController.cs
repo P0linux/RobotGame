@@ -1,6 +1,7 @@
 ﻿using RobotBLL.Abstraction;
 using RobotBLL.Implementation.Commands;
 using RobotBLL.Implementation.Enums;
+using RobotBLL.Implementation.Memento;
 using RobotBLL.Implementation.RobotModels;
 using RobotBLL.Implementation.Services;
 using RobotBLL.Implementation.States;
@@ -19,6 +20,7 @@ namespace RobotBLL.Implementation
         ICommandController commandController;
         IGameStateService gameStateService;
         IPlayerStateService playerStateService;
+        GameHistory gameHistory;
 
 
         public GameController(IGameService gameSevice, IPlayerService playerService, ICommandController commandController)
@@ -26,6 +28,12 @@ namespace RobotBLL.Implementation
             this.gameService = gameSevice;
             this.playerService = playerService;
             this.commandController = commandController;
+            CreateGameHistory();
+        }
+
+        private void CreateGameHistory()
+        {
+            gameHistory = new GameHistory();
         }
 
         public void CreateGameState(int x, int y, int cargoAmount, int toxicCargoAmount, 
@@ -38,7 +46,7 @@ namespace RobotBLL.Implementation
         public void CreatePlayerState(int number, string name)
         {
             RobotModel robotModel = new RobotModel(number, name);
-            playerState = playerService.CreatePlayerState(robotModel);
+            playerState = playerService.CreatePlayerState(robotModel, gameHistory);
             playerStateService = new PlayerStateService(playerState);
         }
 

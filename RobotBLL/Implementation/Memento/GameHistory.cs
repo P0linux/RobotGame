@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.Memento
 {
-    class GameHistory
+    public class GameHistory
     {
         public Stack<RobotMemento> History { get; private set; }
         public GameHistory()

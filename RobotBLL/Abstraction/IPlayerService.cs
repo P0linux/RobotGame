@@ -1,4 +1,5 @@
-﻿using RobotBLL.Implementation.RobotModels;
+﻿using RobotBLL.Implementation.Memento;
+using RobotBLL.Implementation.RobotModels;
 using RobotBLL.Implementation.States;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,6 @@ namespace RobotBLL.Abstraction
 {
     public interface IPlayerService
     {
-        PlayerState CreatePlayerState(RobotModel model);
+        PlayerState CreatePlayerState(RobotModel model, GameHistory history);
     }
 }
