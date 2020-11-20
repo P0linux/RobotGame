@@ -27,7 +27,7 @@ namespace RobotBLL.Implementation.Services
             gameState.CargoAmount++;
         }
 
-        public void IncreaseTotalPrice(float price)
+        public void IncreaseTotalPrice(double price)
         {
             gameState.TotalCurrentPrice += price;
         }
@@ -38,11 +38,19 @@ namespace RobotBLL.Implementation.Services
             {
                 for (int j=0; j<gameState.GameField.y; j++)
                 {
-                    if (gameState.GameField.Cells[i, j].CurrentState == Enums.CellState.Robot) 
+                    if (gameState.GameField.Cells[i, j].CurrentState == CellState.Robot || 
+                        gameState.GameField.Cells[i, j].CurrentState == CellState.RobotCargo) 
                         return (i, j);
                 }
             }
             return (0, 0);
+        }
+
+        public Cell GetCell((int, int) cellCoordinates)
+        {
+            int x = cellCoordinates.Item1;
+            int y = cellCoordinates.Item2;
+            return gameState.GameField.Cells[x, y];
         }
 
         public (int, int) GetFieldDimension()
@@ -70,6 +78,15 @@ namespace RobotBLL.Implementation.Services
             //            gameState.GameField.Cells[i, j].PreviousState = gameState.GameField.Cells[i, j].CurrentState;
             //    }
             //}
+        }
+
+        public void PickCargoUpdateField((int, int) coordinates)
+        {
+            int x = coordinates.Item1;
+            int y = coordinates.Item2;
+            gameState.GameField.PreviousState = gameState.GameField.Cells;
+            gameState.GameField.Cells[x, y].CurrentState = CellState.Robot;
+            gameState.GameField.Cells[x, y].Cargo = null;
         }
 
         private void ChangeRobotCellState((int, int) coordinates, Cell[,] previousState)

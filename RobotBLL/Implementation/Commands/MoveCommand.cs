@@ -10,7 +10,7 @@ namespace RobotBLL.Implementation.Commands
 {
     class MoveCommand: Command
     {
-        int moveCharge = 10;
+        int moveCharge = 5;
         IGameStateService gameState;
         IPlayerStateService playerState;
         MoveParameter parameter;
