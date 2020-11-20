@@ -27,6 +27,7 @@ namespace RobotBLL.Implementation.Commands
             playerState.reduceBatteryCharge(moveCharge);
             playerState.SaveState();
             gameState.MoveUpdateField(newCoordinates);
+            gameState.CheckEndGame(playerState.GetBatteryCharge());
         }
 
         public override void Undo()

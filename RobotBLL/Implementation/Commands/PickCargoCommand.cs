@@ -27,12 +27,15 @@ namespace RobotBLL.Implementation.Commands
             gameStateService.IncreaseTotalPrice(cargo.Price);
             playerStateService.reduceBatteryCharge(pickCharge);
             gameStateService.PickCargoUpdateField(robotCoordinates);
+            gameStateService.ReduceCargoAmount();
+            gameStateService.CheckEndGame(playerStateService.GetBatteryCharge());
         }
 
         public override void Undo()
         {
             playerStateService.RestoreState();
             gameStateService.UndoUpdateField();
+            gameStateService.IncreaseCargoAmount();
         }
 
         private Cargo CheckCargo((int, int) robotCoordinates)

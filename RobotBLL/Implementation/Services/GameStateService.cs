@@ -89,6 +89,11 @@ namespace RobotBLL.Implementation.Services
             gameState.GameField.Cells[x, y].Cargo = null;
         }
 
+        public void CheckEndGame(int robotCharge)
+        {
+            if (robotCharge <= 0) gameState.IsEnded = true;
+        }
+
         private void ChangeRobotCellState((int, int) coordinates, Cell[,] previousState)
         {
             int x = coordinates.Item1;

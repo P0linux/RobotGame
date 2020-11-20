@@ -15,6 +15,7 @@ namespace RobotBLL.Abstraction
         void MoveUpdateField((int, int) newCoordinates);
         void PickCargoUpdateField((int, int) coordinates);
         void UndoUpdateField();
+        void CheckEndGame(int robotCharge);
         Cell GetCell((int, int) cellCoordinates);
 
     }
