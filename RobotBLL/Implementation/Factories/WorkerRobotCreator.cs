@@ -11,6 +11,7 @@ namespace RobotBLL.Implementation.Factories
         {
             Robot robot = new WorkerRobot(model);
             robot.DecodingProbability = 10;
+            robot.Carrying = 20;
             return robot;
         }
     }
