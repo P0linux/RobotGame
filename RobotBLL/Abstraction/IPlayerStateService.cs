@@ -10,5 +10,6 @@ namespace RobotBLL.Abstraction
         int GetBatteryCharge();
         void SaveState();
         void RestoreState();
+        int GetDecodingProbability();
     }
 }

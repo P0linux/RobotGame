@@ -75,11 +75,12 @@ namespace RobotBLL.Implementation.Services
 
         public void PickCargoUpdateField((int, int) coordinates)
         {
+            Field field = gameState.GameField;
             int x = coordinates.Item1;
             int y = coordinates.Item2;
-            gameState.GameField.PreviousState = gameState.GameField.Cells;
-            gameState.GameField.Cells[x, y].CurrentState = CellState.Robot;
-            gameState.GameField.Cells[x, y].Cargo = null;
+            field.PreviousState = field.DeepClone(field.Cells);
+            field.Cells[x, y].CurrentState = CellState.Robot;
+            field.Cells[x, y].Cargo = null;
         }
 
         public void CheckEndGame(int robotCharge)

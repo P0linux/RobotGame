@@ -25,6 +25,11 @@ namespace RobotBLL.Implementation.Services
             return playerState.GameRobot.BatteryCharge;
         }
 
+        public int GetDecodingProbability()
+        {
+            return playerState.GameRobot.DecodingProbability;
+        }
+
         public void SaveState()
         {
             playerState.History.History.Push(playerState.GameRobot.SaveState());

@@ -24,11 +24,8 @@ namespace RobotBLL.Implementation.Commands
         {
             var robotCoordinates = gameStateService.GetRobotCoordinates();
             var cargo = CheckCargo(robotCoordinates);
-            gameStateService.IncreaseTotalPrice(cargo.Price);
-            playerStateService.reduceBatteryCharge(pickCharge);
-            gameStateService.PickCargoUpdateField(robotCoordinates);
-            gameStateService.ReduceCargoAmount();
-            gameStateService.CheckEndGame(playerStateService.GetBatteryCharge());
+            if (cargo.IsDecoding) PickDecodingCargo(robotCoordinates, cargo);
+            else PickCargo(robotCoordinates, cargo);
         }
 
         public override void Undo()
@@ -45,6 +42,35 @@ namespace RobotBLL.Implementation.Commands
             var cell = gameStateService.GetCell(robotCoordinates);
             if (cell.CurrentState == CellState.RobotCargo) return cell.Cargo;
             else throw new PickCargoException("No cargo in the cell");
+        }
+
+        private bool Decode()
+        {
+            Random random = new Random();
+            var condition = random.Next() <= playerStateService.GetDecodingProbability();
+            return condition ? true : false;
+        }
+
+        private void PickDecodingCargo((int, int) robotCoordinates, Cargo cargo)
+        {
+            if (Decode())
+            {
+                PickCargo(robotCoordinates, cargo);
+            }
+            else 
+            {
+                playerStateService.reduceBatteryCharge(100);
+                gameStateService.CheckEndGame(playerStateService.GetBatteryCharge());
+            }
+        }
+
+        private void PickCargo((int, int) robotCoordinates, Cargo cargo)
+        {
+            playerStateService.reduceBatteryCharge(pickCharge);
+            gameStateService.IncreaseTotalPrice(cargo.Price);
+            gameStateService.PickCargoUpdateField(robotCoordinates);
+            gameStateService.ReduceCargoAmount();
+            gameStateService.CheckEndGame(playerStateService.GetBatteryCharge());
         }
     }
 }
