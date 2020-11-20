@@ -2,6 +2,7 @@
 using RobotBLL.Implementation.Commands;
 using RobotBLL.Implementation.Enums;
 using RobotBLL.Implementation.Memento;
+using RobotBLL.Implementation.Models;
 using RobotBLL.Implementation.RobotModels;
 using RobotBLL.Implementation.Services;
 using RobotBLL.Implementation.States;
@@ -48,10 +49,9 @@ namespace RobotBLL.Implementation
             commandController.SetPickCommand(pickCommand);
         }
 
-        public void CreateGameState(int x, int y, int cargoAmount, int toxicCargoAmount, 
-                                     double maxPrice, double maxWeight, bool isDecoding)
+        public void CreateGameState(GameStateOptions options)
         {
-            gameState = gameService.CreateGameState(x, y, cargoAmount, toxicCargoAmount, maxPrice, maxWeight, isDecoding);
+            gameState = gameService.CreateGameState(options);
             gameStateService = new GameStateService(gameState);
         }
 

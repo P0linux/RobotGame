@@ -13,6 +13,7 @@ namespace RobotPL
         IGameController gameController;
         FieldMapper mapper = new FieldMapper();
         MoveParameterMapper moveMapper = new MoveParameterMapper();
+        StateMapper stateMapper = new StateMapper();
 
         public Presenter(IView view, IGameController gameController)
         {
@@ -35,8 +36,8 @@ namespace RobotPL
 
         private void CreateStates()
         {
-            gameController.CreateGameState(view.gameStateModel.x, view.gameStateModel.y, view.gameStateModel.cargoAmount, view.gameStateModel.toxicCargoAmount,
-                                           view.gameStateModel.MaxPrice, view.gameStateModel.MaxWeight, view.gameStateModel.IsDecoding);
+            var gameState = stateMapper.Map(view.gameStateModel);
+            gameController.CreateGameState(gameState);
             gameController.CreatePlayerState(view.playerStateModel.Number, view.playerStateModel.Name);
         }
 

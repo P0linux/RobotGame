@@ -1,6 +1,7 @@
 ﻿using RobotBLL.Abstraction;
 using RobotBLL.Implementation.CargoModels;
 using RobotBLL.Implementation.FieldModels;
+using RobotBLL.Implementation.Models;
 using RobotBLL.Implementation.States;
 using System;
 using System.Collections.Generic;
@@ -56,8 +57,6 @@ namespace RobotBLL.Implementation.Services
             {
                 cargos.Add(new Cargo(random.NextDouble() * maxPrice, random.NextDouble() * maxWeight, isDecoding));
             }
-            //cargos = cargos.Select(c => c = new Cargo(random.NextDouble() * maxPrice, random.NextDouble() * maxWeight, isDecoding))
-            //               .ToList();
             return cargos;
         }
 
@@ -69,17 +68,15 @@ namespace RobotBLL.Implementation.Services
             return cargos;
         }
 
-        public GameState CreateGameState(int x, int y, int cargoAmount, int toxicCargoAmount, double maxPrice, 
-                                         double maxWeight, bool isDecoding)
+        public GameState CreateGameState(GameStateOptions options)
         {
-            Field field = CreateField(x, y);
-            //previousState[0, 0].CurrentState = Enums.CellState.Empty;
+            Field field = CreateField(options.x, options.y);
             field.Cells[0, 0].CurrentState = Enums.CellState.Robot;
-            List<Cargo> cargos = CreateCargos(cargoAmount, maxPrice, maxWeight, isDecoding);
-            List<Cargo> toxicCargos = CreateToxicCargos(toxicCargoAmount, maxPrice, maxWeight, isDecoding);
-            PlaceAllCargos(cargos, toxicCargos, x, y, field);
+            List<Cargo> cargos = CreateCargos(options.CargoAmount, options.MaxPrice, options.MaxWeight, options.IsDecoding);
+            List<Cargo> toxicCargos = CreateToxicCargos(options.ToxicCargoAmount, options.MaxPrice, options.MaxWeight, options.IsDecoding);
+            PlaceAllCargos(cargos, toxicCargos, options.x, options.y, field);
             field.PreviousState = CreatePreviousState(field);
-            return new GameState(field, cargoAmount + toxicCargoAmount);
+            return new GameState(field, options.CargoAmount + options.ToxicCargoAmount);
         }
 
         private Cell[,] CreatePreviousState(Field field)

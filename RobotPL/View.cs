@@ -17,6 +17,8 @@ namespace RobotPL
 
         public List<string> options = new List<string> { "Move", "Pick curgo", "Undo move", "Undo pick curgo" };
 
+        public List<string> moveParameters = new List<string> { "Up", "Down", "Left", "Right" };
+
         public delegate void Handler();
         public event Handler OnMove;
         public event Handler OnPickCargo;
@@ -44,7 +46,7 @@ namespace RobotPL
         public void DisplayGameMenu()
         {
             Console.WriteLine("Game menu: ");
-            Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: {3}\n5: \n", options.Cast<object>().ToArray());
+            Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: \n", options.Cast<object>().ToArray());
             userOption = Console.ReadLine();
             GetUserOption(userOption);
         }
@@ -89,6 +91,7 @@ namespace RobotPL
             {
                 case "1":
                     Console.WriteLine("Input move parameter: ");
+                    Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: \n", moveParameters.Cast<object>().ToArray());
                     moveParameter = Console.ReadLine();
                     OnMove.Invoke();
                     break;

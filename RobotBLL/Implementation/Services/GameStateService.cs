@@ -71,14 +71,6 @@ namespace RobotBLL.Implementation.Services
             field.PreviousState = field.DeepClone(field.Cells); 
             ChangeNewRobotCellState(newCoordinates);
             ChangeRobotCellState(oldCoordinates, previousState);
-            //for (int i = 0; i < gameState.GameField.x; i++)
-            //{
-            //    for (int j = 0; j < gameState.GameField.y; j++)
-            //    {
-            //        if ((i, j) != oldCoordinates && (i, j) != newCoordinates)
-            //            gameState.GameField.Cells[i, j].PreviousState = gameState.GameField.Cells[i, j].CurrentState;
-            //    }
-            //}
         }
 
         public void PickCargoUpdateField((int, int) coordinates)
@@ -99,10 +91,7 @@ namespace RobotBLL.Implementation.Services
         {
             int x = coordinates.Item1;
             int y = coordinates.Item2;
-            //var currentState = gameState.GameField.Cells[coordinates.Item1, coordinates.Item2].CurrentState;
-            //var previousState = gameState.GameField.Cells[coordinates.Item1, coordinates.Item2].PreviousState;
             gameState.GameField.Cells[x, y].CurrentState = previousState[x, y].CurrentState;
-            //gameState.GameField.Cells[coordinates.Item1, coordinates.Item2].PreviousState = currentState;
         }
 
         private void ChangeNewRobotCellState((int, int) coordinates)
@@ -110,7 +99,6 @@ namespace RobotBLL.Implementation.Services
             int x = coordinates.Item1;
             int y = coordinates.Item2;
             var currentState = gameState.GameField.Cells[x, y].CurrentState;
-            //gameState.GameField.Cells[coordinates.Item1, coordinates.Item2].PreviousState = currentState;
             if (currentState == CellState.Cargo)
                 gameState.GameField.Cells[x, y].CurrentState = CellState.RobotCargo;
             else gameState.GameField.Cells[x, y].CurrentState = CellState.Robot;

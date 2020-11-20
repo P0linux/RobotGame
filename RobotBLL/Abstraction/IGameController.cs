@@ -1,4 +1,5 @@
 ﻿using RobotBLL.Implementation.Enums;
+using RobotBLL.Implementation.Models;
 using RobotBLL.Implementation.States;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,7 @@ namespace RobotBLL.Abstraction
 {
     public interface IGameController
     {
-        void CreateGameState(int x, int y, int cargoAmount, int toxicCargoAmount,
-                                     double maxPrice, double maxWeight, bool isDecoding);
+        void CreateGameState(GameStateOptions options);
         void CreatePlayerState(int number, string name);
         GameState GetGameState();
         PlayerState GetPlayerState();
