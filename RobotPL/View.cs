@@ -2,6 +2,7 @@
 using RobotPL.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RobotPL
@@ -10,6 +11,17 @@ namespace RobotPL
     {
         public GameStateModel gameStateModel { get; set; }
         public PlayerStateModel playerStateModel { get; set; }
+
+        public string userOption { get; set; }
+        public string moveParameter { get; set; }
+
+        public List<string> options = new List<string> { "Move", "Pick curgo", "Undo move", "Undo pick curgo" };
+
+        public delegate void Handler();
+        public event Handler OnMove;
+        public event Handler OnPickCargo;
+        public event Handler OnMoveUndo;
+        public event Handler OnPickUndo;
 
         public void DisplayStartMenu()
         {
@@ -29,7 +41,21 @@ namespace RobotPL
             }
         }
 
-        public GameStateModel GetGameStateParameters()
+        public void DisplayGameMenu()
+        {
+            Console.WriteLine("Game menu: ");
+            Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: {3}\n5: \n", options.Cast<object>().ToArray());
+            userOption = Console.ReadLine();
+            GetUserOption(userOption);
+        }
+
+        public void DisplayEndResult(double totalPrice)
+        {
+            Console.WriteLine("Game over!");
+            Console.WriteLine("Total price: {0}", totalPrice);
+        }
+
+        private GameStateModel GetGameStateParameters()
         {
             Console.WriteLine("Input game field x dimension: ");
             int x = StringToInt(Console.ReadLine());
@@ -48,13 +74,34 @@ namespace RobotPL
             return new GameStateModel(x, y, ca, tca, mp, mw, id);
         }
 
-        public PlayerStateModel GetPlayerStateParameters()
+        private PlayerStateModel GetPlayerStateParameters()
         {
             Console.WriteLine("Input robot number: ");
             int num = StringToInt(Console.ReadLine());
             Console.WriteLine("Input robot name: ");
             string name = Console.ReadLine();
             return new PlayerStateModel(num, name);
+        }
+
+        private void GetUserOption(string userOption)
+        {
+            switch (userOption)
+            {
+                case "1":
+                    Console.WriteLine("Input move parameter: ");
+                    moveParameter = Console.ReadLine();
+                    OnMove.Invoke();
+                    break;
+                case "2":
+                    OnPickCargo.Invoke();
+                    break;
+                case "3":
+                    OnMoveUndo.Invoke();
+                    break;
+                case "4":
+                    OnPickUndo.Invoke();
+                    break;
+            }
         }
 
         private bool StringToBool(string parameter)

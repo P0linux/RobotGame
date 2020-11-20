@@ -14,8 +14,8 @@ namespace RobotPL
             var services = new ServiceCollection();
             ConfigureServices(services);
             var serviceProvider = services.BuildServiceProvider();
-            var controller = serviceProvider.GetService<Controller>();
-            controller.StartGame();
+            var presenter = serviceProvider.GetService<Presenter>();
+            presenter.StartGame();
             //Console.WriteLine("Hello World!");
             //GameController gameController = new GameController(new GameService(), new PlayerService(), new CommandController());
             //gameController.CreatePlayerState(1, "Polina");
@@ -32,7 +32,7 @@ namespace RobotPL
             services.AddTransient<IPlayerService, PlayerService>();
             services.AddTransient<IGameController, GameController>();
             services.AddTransient<IView, View>();
-            services.AddTransient<Controller, Controller>();
+            services.AddTransient<Presenter, Presenter>();
         }
     }
 }

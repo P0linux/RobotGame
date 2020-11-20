@@ -36,6 +36,18 @@ namespace RobotBLL.Implementation
             gameHistory = new GameHistory();
         }
 
+        private void SetMoveCommand(MoveParameter parameter)
+        {
+            Command moveCommand = new MoveCommand(gameStateService, playerStateService, parameter);
+            commandController.SetMoveCommand(moveCommand);
+        }
+
+        private void SetPickCommand()
+        {
+            Command pickCommand = new PickCargoCommand(gameStateService, playerStateService);
+            commandController.SetPickCommand(pickCommand);
+        }
+
         public void CreateGameState(int x, int y, int cargoAmount, int toxicCargoAmount, 
                                      double maxPrice, double maxWeight, bool isDecoding)
         {
@@ -58,19 +70,7 @@ namespace RobotBLL.Implementation
         public PlayerState GetPlayerState()
         {
             return playerState;
-        }
-
-        private void SetMoveCommand(MoveParameter parameter)
-        {
-            Command moveCommand = new MoveCommand(gameStateService, playerStateService, parameter);
-            commandController.SetMoveCommand(moveCommand);
-        }
-
-        private void SetPickCommand()
-        {
-            Command pickCommand = new PickCargoCommand();
-            commandController.SetPickCommand(pickCommand);
-        }
+        }     
 
         public void Move(MoveParameter moveParameter)
         {
@@ -85,12 +85,18 @@ namespace RobotBLL.Implementation
 
         public void PickCargo()
         {
+            SetPickCommand();
             commandController.PickCargo();
         }
 
         public void PickUndo()
         {
             commandController.PickCargoUndo();
+        }
+
+        public bool CheckEndGame()
+        {
+            return gameState.IsEnded;
         }
     }
 }
