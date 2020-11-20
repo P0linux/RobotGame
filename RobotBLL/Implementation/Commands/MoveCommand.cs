@@ -63,7 +63,7 @@ namespace RobotBLL.Implementation.Commands
         private (int, int) CanMoveDown((int, int) coordinates)
         {
             (int, int) dimension = gameState.GetFieldDimension();
-            if (coordinates.Item2 == dimension.Item1 - 1) throw new MoveException("Can not move down");
+            if (coordinates.Item1 == dimension.Item1 - 1) throw new MoveException("Can not move down");
             return (coordinates.Item1 + 1, coordinates.Item2);
         }
 

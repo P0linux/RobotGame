@@ -73,12 +73,20 @@ namespace RobotBLL.Implementation.Services
                                          double maxWeight, bool isDecoding)
         {
             Field field = CreateField(x, y);
-            field.PreviousState = field.Cells;
+            //previousState[0, 0].CurrentState = Enums.CellState.Empty;
             field.Cells[0, 0].CurrentState = Enums.CellState.Robot;
             List<Cargo> cargos = CreateCargos(cargoAmount, maxPrice, maxWeight, isDecoding);
             List<Cargo> toxicCargos = CreateToxicCargos(toxicCargoAmount, maxPrice, maxWeight, isDecoding);
             PlaceAllCargos(cargos, toxicCargos, x, y, field);
+            field.PreviousState = CreatePreviousState(field);
             return new GameState(field, cargoAmount + toxicCargoAmount);
+        }
+
+        private Cell[,] CreatePreviousState(Field field)
+        {
+            Cell[,] previousState = field.DeepClone(field.Cells);
+            previousState[0, 0].CurrentState = Enums.CellState.Empty;
+            return previousState;
         }
     }
 }

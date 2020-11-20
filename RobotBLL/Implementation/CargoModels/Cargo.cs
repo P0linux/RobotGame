@@ -17,5 +17,10 @@ namespace RobotBLL.Implementation.CargoModels
             Weight = weight;
             IsDecoding = isDecoding;
         }
+
+        public Cargo()
+        {
+
+        }
     }
 }

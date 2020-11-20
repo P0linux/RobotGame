@@ -60,14 +60,15 @@ namespace RobotBLL.Implementation.Services
 
         public void UndoUpdateField()
         {
-            gameState.GameField.Cells = gameState.GameField.PreviousState;
+            gameState.GameField.Cells = gameState.GameField.DeepClone(gameState.GameField.PreviousState);
         }
 
         public void MoveUpdateField((int, int) newCoordinates)
         {
+            Field field = gameState.GameField;
             (int, int) oldCoordinates = GetRobotCoordinates();
-            var previousState = gameState.GameField.PreviousState;
-            gameState.GameField.PreviousState = gameState.GameField.Cells;
+            var previousState = field.PreviousState;
+            field.PreviousState = field.DeepClone(field.Cells); 
             ChangeNewRobotCellState(newCoordinates);
             ChangeRobotCellState(oldCoordinates, previousState);
             //for (int i = 0; i < gameState.GameField.x; i++)
