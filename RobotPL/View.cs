@@ -29,12 +29,13 @@ namespace RobotPL
         {
             Console.WriteLine("Start menu: ");
             Console.WriteLine("Input start game parameters: ");
-            gameStateModel = GetGameStateParameters();
+            gameStateModel = new GameStateModel();
             playerStateModel = GetPlayerStateParameters();
         }
 
         public void DisplayField(FieldModel fieldModel)
         {
+            Console.Clear();
             int[,] field = fieldModel.Field;
             for (int i = 0; i < fieldModel.x; i++)
             {
@@ -46,7 +47,7 @@ namespace RobotPL
         public void DisplayGameMenu()
         {
             Console.WriteLine("Game menu: ");
-            Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: \n", options.Cast<object>().ToArray());
+            Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: {3}\n", options.Cast<object>().ToArray());
             userOption = Console.ReadLine();
             GetUserOption(userOption);
         }
@@ -91,7 +92,7 @@ namespace RobotPL
             {
                 case "1":
                     Console.WriteLine("Input move parameter: ");
-                    Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: \n", moveParameters.Cast<object>().ToArray());
+                    Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: {3}\n", moveParameters.Cast<object>().ToArray());
                     moveParameter = Console.ReadLine();
                     OnMove.Invoke();
                     break;

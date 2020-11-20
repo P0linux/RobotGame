@@ -24,5 +24,10 @@ namespace RobotPL.Models
             MaxWeight = mw;
             IsDecoding = id;
         }
+
+        public GameStateModel()
+        {
+
+        }
     }
 }
