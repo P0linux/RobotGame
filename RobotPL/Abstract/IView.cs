@@ -17,7 +17,6 @@ namespace RobotPL.Abstract
         event View.Handler OnMoveUndo;
         event View.Handler OnPickUndo;
 
-
         void DisplayStartMenu();
         void DisplayField(FieldModel fieldModel);
         void DisplayGameMenu();

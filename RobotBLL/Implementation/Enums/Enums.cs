@@ -19,7 +19,4 @@ namespace RobotBLL.Implementation.Enums
         Cargo,
         RobotCargo
     }
-    class Enums
-    {
-    }
 }
