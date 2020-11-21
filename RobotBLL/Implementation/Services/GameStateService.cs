@@ -90,9 +90,15 @@ namespace RobotBLL.Implementation.Services
 
         private void ChangeRobotCellState((int, int) coordinates, Cell[,] previousState)
         {
+            Field field = gameState.GameField;
             int x = coordinates.Item1;
             int y = coordinates.Item2;
-            gameState.GameField.Cells[x, y].CurrentState = previousState[x, y].CurrentState;
+            if (previousState[x, y].CurrentState == CellState.RobotCargo)
+            {
+                if (field.Cells[x, y].Cargo == null) field.Cells[x, y].CurrentState = CellState.Empty;
+                else field.Cells[x, y].CurrentState = CellState.Cargo;
+            }
+            else gameState.GameField.Cells[x, y].CurrentState = previousState[x, y].CurrentState;
         }
 
         private void ChangeNewRobotCellState((int, int) coordinates)
