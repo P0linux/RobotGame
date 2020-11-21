@@ -94,10 +94,24 @@ namespace RobotPL
                     Console.WriteLine("Input move parameter: ");
                     Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: {3}\n", moveParameters.Cast<object>().ToArray());
                     moveParameter = Console.ReadLine();
-                    OnMove.Invoke();
+                    try 
+                    {
+                        OnMove.Invoke();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                     break;
                 case "2":
-                    OnPickCargo.Invoke();
+                    try
+                    {
+                        OnPickCargo.Invoke();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                     break;
                 case "3":
                     OnMoveUndo.Invoke();
