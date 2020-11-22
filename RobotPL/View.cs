@@ -15,7 +15,7 @@ namespace RobotPL
         public string userOption { get; set; }
         public string moveParameter { get; set; }
 
-        public List<string> options = new List<string> { "Move", "Pick curgo", "Undo move", "Undo pick curgo" };
+        public List<string> options = new List<string> { "Move", "Pick curgo", "Undo move", "Undo pick curgo", "Check cargo info" };
 
         public List<string> moveParameters = new List<string> { "Up", "Down", "Left", "Right" };
 
@@ -24,6 +24,7 @@ namespace RobotPL
         public event Handler OnPickCargo;
         public event Handler OnMoveUndo;
         public event Handler OnPickUndo;
+        public event Handler OnGetCargoInfo;
 
         public void DisplayStartMenu()
         {
@@ -44,10 +45,21 @@ namespace RobotPL
             }
         }
 
+        public void DisplayPlayerInfo(int batteryCharge, double totalPrice)
+        {
+            Console.WriteLine("Robot battery charge: {0}", batteryCharge);
+            Console.WriteLine("Total price: {0}", totalPrice);
+        }
+
+        public void DisplayCargoInfo(bool isDecoding)
+        {
+            if (isDecoding) Console.WriteLine("Cargo is decoding");
+            else Console.WriteLine("Cargo is not decoding");
+        }
         public void DisplayGameMenu()
         {
             Console.WriteLine("Game menu: ");
-            Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: {3}\n", options.Cast<object>().ToArray());
+            Console.WriteLine("1: {0}\n2: {1}\n3: {2}\n4: {3}\n5: {4}\n", options.Cast<object>().ToArray());
             userOption = Console.ReadLine();
             GetUserOption(userOption);
         }
@@ -118,6 +130,9 @@ namespace RobotPL
                     break;
                 case "4":
                     OnPickUndo.Invoke();
+                    break;
+                case "5":
+                    OnGetCargoInfo.Invoke();
                     break;
             }
         }

@@ -23,6 +23,13 @@ namespace RobotPL
             view.OnMoveUndo += MoveUndo;
             view.OnPickCargo += PickCargo;
             view.OnPickUndo += PickUndo;
+            view.OnGetCargoInfo += GetCargoInfo;
+        }
+
+        private void GetCargoInfo()
+        {
+            bool cargoType = gameController.GetCargoType();
+            view.DisplayCargoInfo(cargoType);
         }
 
         public void StartGame()
@@ -31,6 +38,7 @@ namespace RobotPL
             CreateStates();
             var gameState = gameController.GetGameState();
             view.DisplayField(mapper.Map(gameState.GameField));
+            DisplayPlayerInfo();
             view.DisplayGameMenu();
         }
 
@@ -74,8 +82,16 @@ namespace RobotPL
             {
                 var gameState = gameController.GetGameState();
                 view.DisplayField(mapper.Map(gameState.GameField));
+                DisplayPlayerInfo();
                 view.DisplayGameMenu();
             }
+        }
+
+        private void DisplayPlayerInfo()
+        {
+            var gameState = gameController.GetGameState();
+            var playerState = gameController.GetPlayerState();
+            view.DisplayPlayerInfo(playerState.GameRobot.BatteryCharge, gameState.TotalCurrentPrice);
         }
     }
 }

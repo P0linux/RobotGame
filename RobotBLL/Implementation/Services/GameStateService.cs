@@ -110,5 +110,11 @@ namespace RobotBLL.Implementation.Services
                 gameState.GameField.Cells[x, y].CurrentState = CellState.RobotCargo;
             else gameState.GameField.Cells[x, y].CurrentState = CellState.Robot;
         }
+        public bool GetCargoType()
+        {
+            var robotCoordinates = GetRobotCoordinates();
+            Cell cell = GetCell(robotCoordinates);
+            return cell.Cargo.IsDecoding;
+        }
     }
 }

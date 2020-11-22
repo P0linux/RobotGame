@@ -18,5 +18,6 @@ namespace RobotBLL.Abstraction
         void PickCargo();
         void PickUndo();
         bool CheckEndGame();
+        bool GetCargoType();
     }
 }

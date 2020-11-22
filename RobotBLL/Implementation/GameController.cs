@@ -98,5 +98,9 @@ namespace RobotBLL.Implementation
         {
             return gameState.IsEnded;
         }
+        public bool GetCargoType()
+        {
+            return gameStateService.GetCargoType();
+        }
     }
 }

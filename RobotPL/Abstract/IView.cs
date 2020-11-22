@@ -16,10 +16,13 @@ namespace RobotPL.Abstract
         event View.Handler OnPickCargo;
         event View.Handler OnMoveUndo;
         event View.Handler OnPickUndo;
+        event View.Handler OnGetCargoInfo;
 
         void DisplayStartMenu();
         void DisplayField(FieldModel fieldModel);
         void DisplayGameMenu();
         void DisplayEndResult(double totalPrice);
+        void DisplayPlayerInfo(int batteryCharge, double totalPrice);
+        void DisplayCargoInfo(bool isDecoding);
     }
 }
