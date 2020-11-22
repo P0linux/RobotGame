@@ -1,4 +1,5 @@
 ﻿using RobotBLL.Abstraction;
+using RobotBLL.Implementation.CargoModels;
 using RobotBLL.Implementation.Enums;
 using RobotBLL.Implementation.FieldModels;
 using RobotBLL.Implementation.States;
@@ -110,11 +111,12 @@ namespace RobotBLL.Implementation.Services
                 gameState.GameField.Cells[x, y].CurrentState = CellState.RobotCargo;
             else gameState.GameField.Cells[x, y].CurrentState = CellState.Robot;
         }
-        public bool GetCargoType()
+        public Cargo GetCurrentCellCargo()
         {
             var robotCoordinates = GetRobotCoordinates();
             Cell cell = GetCell(robotCoordinates);
-            return cell.Cargo.IsDecoding;
+            if (cell.CurrentState == CellState.RobotCargo) return cell.Cargo;
+            else return null;
         }
     }
 }

@@ -28,8 +28,13 @@ namespace RobotPL
 
         private void GetCargoInfo()
         {
-            bool cargoType = gameController.GetCargoType();
-            view.DisplayCargoInfo(cargoType);
+            var cargo = gameController.GetCurrentCellCargo();
+            var gameState = gameController.GetGameState();
+            view.DisplayField(mapper.Map(gameState.GameField));
+            DisplayPlayerInfo();
+            if (cargo == null) view.DisplayNoCargoInfo();
+            else view.DisplayCargoInfo(cargo.IsDecoding, cargo.Price, cargo.Weight);
+            view.DisplayGameMenu();
         }
 
         public void StartGame()

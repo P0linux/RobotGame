@@ -1,4 +1,5 @@
-﻿using RobotBLL.Implementation.Enums;
+﻿using RobotBLL.Implementation.CargoModels;
+using RobotBLL.Implementation.Enums;
 using RobotBLL.Implementation.Models;
 using RobotBLL.Implementation.States;
 using System;
@@ -18,6 +19,6 @@ namespace RobotBLL.Abstraction
         void PickCargo();
         void PickUndo();
         bool CheckEndGame();
-        bool GetCargoType();
+        Cargo GetCurrentCellCargo();    
     }
 }

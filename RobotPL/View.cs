@@ -51,11 +51,19 @@ namespace RobotPL
             Console.WriteLine("Total price: {0}", totalPrice);
         }
 
-        public void DisplayCargoInfo(bool isDecoding)
+        public void DisplayCargoInfo(bool isDecoding, double price, double weight)
         {
             if (isDecoding) Console.WriteLine("Cargo is decoding");
             else Console.WriteLine("Cargo is not decoding");
+            Console.WriteLine("Cargo price: {0}", price);
+            Console.WriteLine("Cargo weight: {0}", weight);
         }
+
+        public void DisplayNoCargoInfo()
+        {
+            Console.WriteLine("No cargo in the cell");
+        }
+
         public void DisplayGameMenu()
         {
             Console.WriteLine("Game menu: ");

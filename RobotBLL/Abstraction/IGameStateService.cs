@@ -1,4 +1,5 @@
-﻿using RobotBLL.Implementation.FieldModels;
+﻿using RobotBLL.Implementation.CargoModels;
+using RobotBLL.Implementation.FieldModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +18,6 @@ namespace RobotBLL.Abstraction
         void UndoUpdateField();
         void CheckEndGame(int robotCharge);
         Cell GetCell((int, int) cellCoordinates);
-        bool GetCargoType();
-
+        Cargo GetCurrentCellCargo();
     }
 }

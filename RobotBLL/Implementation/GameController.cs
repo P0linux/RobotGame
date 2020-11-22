@@ -1,4 +1,5 @@
 ﻿using RobotBLL.Abstraction;
+using RobotBLL.Implementation.CargoModels;
 using RobotBLL.Implementation.Commands;
 using RobotBLL.Implementation.Enums;
 using RobotBLL.Implementation.Memento;
@@ -98,9 +99,9 @@ namespace RobotBLL.Implementation
         {
             return gameState.IsEnded;
         }
-        public bool GetCargoType()
+        public Cargo GetCurrentCellCargo()
         {
-            return gameStateService.GetCargoType();
+            return gameStateService.GetCurrentCellCargo();
         }
     }
 }

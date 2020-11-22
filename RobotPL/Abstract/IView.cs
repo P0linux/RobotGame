@@ -23,6 +23,7 @@ namespace RobotPL.Abstract
         void DisplayGameMenu();
         void DisplayEndResult(double totalPrice);
         void DisplayPlayerInfo(int batteryCharge, double totalPrice);
-        void DisplayCargoInfo(bool isDecoding);
+        void DisplayCargoInfo(bool isDecoding, double price, double weight);
+        void DisplayNoCargoInfo();
     }
 }
