@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace RobotTest
+namespace RobotTests
 {
     public class PlayerServiceTest
     {

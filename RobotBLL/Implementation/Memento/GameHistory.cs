@@ -6,7 +6,7 @@ namespace RobotBLL.Implementation.Memento
 {
     public class GameHistory
     {
-        public Stack<RobotMemento> History { get; private set; }
+        public Stack<RobotMemento> History { get; set; }
         public GameHistory()
         {
             History = new Stack<RobotMemento>();

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.RobotModels
 {
-    class SmartRobot: Robot
+    public class SmartRobot: Robot
     {
         public SmartRobot(RobotModel model): base(model) { }
 

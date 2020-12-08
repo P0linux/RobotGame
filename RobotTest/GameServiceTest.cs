@@ -7,7 +7,7 @@ using Xunit;
 using System.Linq;
 using RobotBLL.Implementation.Enums;
 
-namespace Robot.Tests
+namespace RobotTests
 {
     public class GameServiceTest
     {

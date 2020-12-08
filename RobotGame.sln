@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotBLL", "RobotBLL\RobotB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotPL", "RobotPL\RobotPL.csproj", "{08958946-AA81-4C46-8783-0297317FF7DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot.Tests", "RobotTest\Robot.Tests.csproj", "{694FF7DB-1D8E-4B2F-AA0B-AFAF62A07016}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotTests", "RobotTest\RobotTests.csproj", "{694FF7DB-1D8E-4B2F-AA0B-AFAF62A07016}"
 	ProjectSection(ProjectDependencies) = postProject
 		{75BAF916-6644-4605-8A0C-69683F598D4E} = {75BAF916-6644-4605-8A0C-69683F598D4E}
 	EndProjectSection
