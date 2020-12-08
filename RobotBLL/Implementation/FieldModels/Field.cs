@@ -23,9 +23,9 @@ namespace RobotBLL.Implementation.FieldModels
         public Cell[,] DeepClone(Cell[,] cells)
         {
             Cell[,] newcells = new Cell[x, y];
-            for (int i = 0; i < x; i++)
+            for (int i = 0; i < cells.GetLength(0); i++)
             {
-                for (int j = 0; j < y; j++)
+                for (int j = 0; j < cells.GetLength(1); j++)
                 {
                     newcells[i, j] = (Cell)cells[i, j].Clone();
                 }
@@ -33,13 +33,13 @@ namespace RobotBLL.Implementation.FieldModels
             return newcells;
         }
 
-        public (int, int) GetCellCoordinates(Cell cell)
+        public (int, int) GetCellCoordinates(Cell cell, Cell[,] cells)
         {
-            for (int i = 0; i < x; i++)
+            for (int i = 0; i < cells.GetLength(0); i++)
             {
-                for (int j = 0; j < y; j++)
+                for (int j = 0; j < cells.GetLength(1); j++)
                 {
-                    if (Cells[i, j].Equals(cell)) return (i, j);
+                    if (cells[i, j].Equals(cell)) return (i, j);
                 }
             }
             return (-1, -1);

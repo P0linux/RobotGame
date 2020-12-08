@@ -48,7 +48,7 @@ namespace RobotTests
             var field = fixture.Create<Field>();
 
             //Act
-            var result = field.GetCellCoordinates(field[coordinates]);
+            var result = field.GetCellCoordinates(field[coordinates], field.Cells);
 
             //Assert
             Assert.Equal(coordinates, result);
@@ -63,10 +63,25 @@ namespace RobotTests
 
             //Act
             var cell = field[(0, 0)];
-            var coordinates = field.GetCellCoordinates(cell);
+            var coordinates = field.GetCellCoordinates(cell, field.Cells);
 
             //Assert
             Assert.Equal((0, 0), coordinates);
+        }
+
+        [Fact]
+        public void NoCellTest()
+        {
+            //Arrange
+            var fixture = new Fixture();
+            var field = fixture.Create<Field>();
+            var cell = new Cell();
+
+            //Act
+            var coordinates = field.GetCellCoordinates(cell, field.Cells);
+
+            //Assert
+            Assert.Equal((-1, -1), coordinates);
         }
     }
 }
