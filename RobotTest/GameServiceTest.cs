@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
+using System.Linq;
+using RobotBLL.Implementation.Enums;
 
 namespace Robot.Tests
 {
@@ -21,6 +23,9 @@ namespace Robot.Tests
 
             //Assert
             Assert.NotNull(gameState);
+            var cargosResult = gameState.GameField.Where(c => c.CurrentState == CellState.Cargo || c.CurrentState == CellState.RobotCargo)
+                                            .Count();
+            Assert.Equal(5, cargosResult);
         }
     }
 }

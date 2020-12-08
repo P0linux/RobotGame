@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.FieldModels
 {
-    public class Field
+    public class Field: IEnumerable<Cell>
     {
         public int x { get; set; }
         public int y { get; set; }
@@ -31,6 +31,23 @@ namespace RobotBLL.Implementation.FieldModels
                 }
             }
             return newcells;
+        }
+
+        public Cell this[(int, int) point]
+        {
+            get => Cells[point.Item1, point.Item2];
+            set => Cells[point.Item1, point.Item2] = value;
+        }
+
+
+        public IEnumerator<Cell> GetEnumerator()
+        {
+            foreach (Cell c in Cells) yield return c;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }

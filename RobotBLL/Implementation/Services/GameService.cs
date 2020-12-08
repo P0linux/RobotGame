@@ -29,6 +29,7 @@ namespace RobotBLL.Implementation.Services
         private void PlaceCargo(Cargo cargo, Cell cell)
         {
             cell.Cargo = cargo;
+            //TODO: change cell state 
             cell.CurrentState = Enums.CellState.Cargo;
         }
 
@@ -45,7 +46,8 @@ namespace RobotBLL.Implementation.Services
             {
                 int rx = random.Next(x);
                 int ry = random.Next(y);
-                if (field.Cells[rx, ry].CurrentState != Enums.CellState.Cargo)
+                if (field.Cells[rx, ry].CurrentState != Enums.CellState.Cargo || 
+                    field.Cells[rx, ry].CurrentState != Enums.CellState.RobotCargo)
                     PlaceCargo(cargo, field.Cells[rx, ry]);
             }
         }
