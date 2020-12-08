@@ -11,7 +11,7 @@ namespace RobotBLL.Implementation.FieldModels
         public int x { get; set; }
         public int y { get; set; }
         public Cell[,] Cells { get; set; }
-        public Cell[,] PreviousState { get; set; }
+        public Cell[,] PreviousState { get; set; } //TODO: change to stack
 
         public Field(int x, int y)
         {
