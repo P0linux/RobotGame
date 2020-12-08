@@ -33,6 +33,18 @@ namespace RobotBLL.Implementation.FieldModels
             return newcells;
         }
 
+        public (int, int) GetCellCoordinates(Cell cell)
+        {
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < y; j++)
+                {
+                    if (Cells[i, j].Equals(cell)) return (i, j);
+                }
+            }
+            return (-1, -1);
+        }
+
         public Cell this[(int, int) point]
         {
             get => Cells[point.Item1, point.Item2];

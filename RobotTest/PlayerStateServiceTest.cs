@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
+
 namespace RobotTests
 {
     public class PlayerStateServiceTest
@@ -59,6 +60,7 @@ namespace RobotTests
 
             //Assert
             Assert.Equal(100, result);
+            
 
         }
 
