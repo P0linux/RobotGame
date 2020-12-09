@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RobotBLL.Exceptions
 {
-    class PickCargoException: Exception
+    public class PickCargoException: Exception
     {
         public PickCargoException(string message)
             : base()

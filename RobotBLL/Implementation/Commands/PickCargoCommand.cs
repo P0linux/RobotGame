@@ -9,7 +9,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.Commands
 {
-    class PickCargoCommand: Command
+    public class PickCargoCommand: Command
     {
         IGameStateService gameStateService;
         IPlayerStateService playerStateService;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RobotBLL.Exceptions
 {
-    class MoveException: Exception
+    public class MoveException: Exception
     {
         public MoveException(string message)
             :base()

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.Commands
 {
-    class MoveCommand: Command
+    public class MoveCommand: Command
     {
         int moveCharge = 5;
         IGameStateService gameState;
