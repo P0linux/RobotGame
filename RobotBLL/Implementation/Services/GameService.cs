@@ -78,18 +78,23 @@ namespace RobotBLL.Implementation.Services
         public GameState CreateGameState(GameStateOptions options)
         {
             Field field = CreateField(options.x, options.y);
-            field.Cells[0, 0].CurrentState = Enums.CellState.Robot;
+            field.Cells[0, 0].CurrentState = CellState.Robot;
+            
             List<Cargo> cargos = CreateCargos(options.CargoAmount, options.MaxPrice, options.MaxWeight, options.IsDecoding);
             List<Cargo> toxicCargos = CreateToxicCargos(options.ToxicCargoAmount, options.MaxPrice, options.MaxWeight, options.IsDecoding);
+            
             PlaceAllCargos(cargos, toxicCargos, options.x, options.y, field);
-            field.PreviousState = CreatePreviousState(field);
-            return new GameState(field, options.CargoAmount + options.ToxicCargoAmount);
+            
+            //field.PreviousState = CreatePreviousState(field);
+            var gameState = new GameState(field, options.CargoAmount + options.ToxicCargoAmount);
+            gameState.PreviousStates.Push(CreatePreviousState(field));
+            return gameState;
         }
 
-        private Cell[,] CreatePreviousState(Field field)
+        private Field CreatePreviousState(Field field)
         {
-            Cell[,] previousState = field.DeepClone(field.Cells);
-            previousState[0, 0].CurrentState = Enums.CellState.Empty;
+            var previousState = field.DeepClone(field);
+            previousState.Cells[0, 0].CurrentState = CellState.Empty;
             return previousState;
         }
     }

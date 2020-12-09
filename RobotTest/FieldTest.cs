@@ -16,15 +16,15 @@ namespace RobotTests
         {
             //Arrange
             var fixture = new Fixture();
-            var array = fixture.Create<Cell[,]>();
-            foreach (Cell c in array) c.CurrentState = CellState.Cargo;
-            var field = new Field(array.GetLength(0), array.GetLength(1));
+            var field = fixture.Create<Field>();
+            foreach (Cell c in field) c.CurrentState = CellState.Cargo;
+            //var field = new Field(array.GetLength(0), array.GetLength(1));
 
             //Act
-            var result = field.DeepClone(array);
+            var result = field.DeepClone(field);
 
             //Assert
-            result.Should().BeEquivalentTo(array);
+            result.Should().BeEquivalentTo(field);
         }
 
         [Fact]

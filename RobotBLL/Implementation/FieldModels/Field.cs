@@ -11,7 +11,7 @@ namespace RobotBLL.Implementation.FieldModels
         public int x { get; set; }
         public int y { get; set; }
         public Cell[,] Cells { get; set; }
-        public Cell[,] PreviousState { get; set; } //TODO: change to stack
+        //public Cell[,] PreviousState { get; set; } //TODO: change to stack
 
         public Field(int x, int y)
         {
@@ -20,17 +20,18 @@ namespace RobotBLL.Implementation.FieldModels
             this.y = y;
         }
 
-        public Cell[,] DeepClone(Cell[,] cells)
+        public Field DeepClone(Field field)
         {
             Cell[,] newcells = new Cell[x, y];
-            for (int i = 0; i < cells.GetLength(0); i++)
+            for (int i = 0; i < field.Cells.GetLength(0); i++)
             {
-                for (int j = 0; j < cells.GetLength(1); j++)
+                for (int j = 0; j < field.Cells.GetLength(1); j++)
                 {
-                    newcells[i, j] = (Cell)cells[i, j].Clone();
+                    newcells[i, j] = (Cell)field.Cells[i, j].Clone();
                 }
             }
-            return newcells;
+            var newfield = new Field(field.x, field.y) { Cells = newcells};
+            return newfield;
         }
 
         public (int, int) GetCellCoordinates(Cell cell, Cell[,] cells)
