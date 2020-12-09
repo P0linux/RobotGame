@@ -5,7 +5,7 @@ using System.Text;
 
 namespace RobotBLL.Implementation.Factories
 {
-    class SmartRobotCreator : RobotCreator
+    public class SmartRobotCreator : RobotCreator
     {
         public override Robot CreateRobot(RobotModel model)
         {

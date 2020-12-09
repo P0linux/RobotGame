@@ -1,5 +1,6 @@
 ﻿using RobotBLL.Abstraction;
 using RobotBLL.Implementation.CargoModels;
+using RobotBLL.Implementation.Enums;
 using RobotBLL.Implementation.FieldModels;
 using RobotBLL.Implementation.Models;
 using RobotBLL.Implementation.States;
@@ -29,26 +30,30 @@ namespace RobotBLL.Implementation.Services
         private void PlaceCargo(Cargo cargo, Cell cell)
         {
             cell.Cargo = cargo;
-            //TODO: change cell state 
-            cell.CurrentState = Enums.CellState.Cargo;
+            if (cell.CurrentState == CellState.Robot) cell.CurrentState = CellState.RobotCargo; 
+            else cell.CurrentState = CellState.Cargo;
         }
 
         private void PlaceAllCargos(List<Cargo> cargos, List<Cargo> toxicCargos, int x, int y, Field field)
         {
-            foreach (Cargo cargo in cargos)
+            int count = 0;
+            while (count < cargos.Count)
             {
                 int rx = random.Next(x);
                 int ry = random.Next(y);
-                if (field.Cells[rx, ry].CurrentState != Enums.CellState.Cargo) 
-                    PlaceCargo(cargo, field.Cells[rx, ry]);
+                if (field.Cells[rx, ry].CurrentState != CellState.Cargo) 
+                    PlaceCargo(cargos[count], field.Cells[rx, ry]);
+                count++;
             }
-            foreach (Cargo cargo in toxicCargos)
+
+            count = 0;
+            while (count < toxicCargos.Count)
             {
                 int rx = random.Next(x);
                 int ry = random.Next(y);
-                if (field.Cells[rx, ry].CurrentState != Enums.CellState.Cargo || 
-                    field.Cells[rx, ry].CurrentState != Enums.CellState.RobotCargo)
-                    PlaceCargo(cargo, field.Cells[rx, ry]);
+                if (field.Cells[rx, ry].CurrentState != CellState.Cargo)
+                    PlaceCargo(toxicCargos[count], field.Cells[rx, ry]);
+                count++;
             }
         }
 
