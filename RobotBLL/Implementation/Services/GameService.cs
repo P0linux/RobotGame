@@ -85,7 +85,6 @@ namespace RobotBLL.Implementation.Services
             
             PlaceAllCargos(cargos, toxicCargos, options.x, options.y, field);
             
-            //field.PreviousState = CreatePreviousState(field);
             var gameState = new GameState(field, options.CargoAmount + options.ToxicCargoAmount);
             gameState.PreviousStates.Push(CreatePreviousState(field));
             return gameState;
@@ -93,7 +92,7 @@ namespace RobotBLL.Implementation.Services
 
         private Field CreatePreviousState(Field field)
         {
-            var previousState = field.DeepClone(field);
+            var previousState = field.DeepClone();
             previousState.Cells[0, 0].CurrentState = CellState.Empty;
             return previousState;
         }

@@ -61,7 +61,7 @@ namespace RobotBLL.Implementation.Services
 
         public void UndoUpdateField()
         {
-            gameState.GameField = gameState.GameField.DeepClone(gameState.PreviousStates.Pop());
+            gameState.GameField = gameState.PreviousStates.Pop();
         }
 
         public void MoveUpdateField((int, int) newCoordinates)
@@ -69,7 +69,7 @@ namespace RobotBLL.Implementation.Services
             Field field = gameState.GameField;
             (int, int) oldCoordinates = GetRobotCoordinates();
             var previousState = gameState.PreviousStates.Pop();
-            gameState.PreviousStates.Push(field.DeepClone(field)); 
+            gameState.PreviousStates.Push(field.DeepClone()); 
             ChangeNewRobotCellState(newCoordinates);
             ChangeRobotCellState(oldCoordinates, previousState);
         }
@@ -79,7 +79,7 @@ namespace RobotBLL.Implementation.Services
             Field field = gameState.GameField;
             int x = coordinates.Item1;
             int y = coordinates.Item2;
-            gameState.PreviousStates.Push(field.DeepClone(field));
+            gameState.PreviousStates.Push(field.DeepClone());
             field.Cells[x, y].CurrentState = CellState.Robot;
             field.Cells[x, y].Cargo = null;
         }

@@ -11,7 +11,6 @@ namespace RobotBLL.Implementation.FieldModels
         public int x { get; set; }
         public int y { get; set; }
         public Cell[,] Cells { get; set; }
-        //public Cell[,] PreviousState { get; set; } //TODO: change to stack
 
         public Field(int x, int y)
         {
@@ -20,17 +19,17 @@ namespace RobotBLL.Implementation.FieldModels
             this.y = y;
         }
 
-        public Field DeepClone(Field field)
+        public Field DeepClone()
         {
             Cell[,] newcells = new Cell[x, y];
-            for (int i = 0; i < field.Cells.GetLength(0); i++)
+            for (int i = 0; i < this.Cells.GetLength(0); i++)
             {
-                for (int j = 0; j < field.Cells.GetLength(1); j++)
+                for (int j = 0; j < this.Cells.GetLength(1); j++)
                 {
-                    newcells[i, j] = (Cell)field.Cells[i, j].Clone();
+                    newcells[i, j] = (Cell)this.Cells[i, j].Clone();
                 }
             }
-            var newfield = new Field(field.x, field.y) { Cells = newcells};
+            var newfield = new Field(this.x, this.y) { Cells = newcells};
             return newfield;
         }
 
