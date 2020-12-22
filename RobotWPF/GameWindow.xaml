@@ -6,4 +6,5 @@
         xmlns:local="clr-namespace:RobotWPF"
         mc:Ignorable="d"
         Title="GameWindow" Height="450" Width="800">
+    <DataGrid HorizontalAlignment="Left" Height="241" Margin="199,68,0,0" VerticalAlignment="Top" Width="410" AutoGenerateColumns="True" ItemsSource="{Binding Path=Field}"/>
 </Window>

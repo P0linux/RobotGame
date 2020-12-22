@@ -8,5 +8,6 @@ namespace RobotWPF
     public interface IModel
     {
         void StartGame(GameStateModel gameModel, PlayerStateModel playerModel);
+        int[,] GetField();
     }
 }

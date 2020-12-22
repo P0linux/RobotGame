@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Windows;
 using System.Windows.Navigation;
 using RobotWPF.Models;
 
-namespace RobotWPF
+namespace RobotWPF.ViewModels
 {
     class ViewModel: INotifyPropertyChanged
     {
         private IModel _model;
+        
         public ViewModel(IModel model)
         {
             _model = model;
@@ -40,8 +42,13 @@ namespace RobotWPF
 
         private void OpenGameWindow()
         {
-            GameWindow gameWindow = new GameWindow();
-            gameWindow.Show();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is GameWindow)
+                {
+                    w.ShowDialog();
+                }
+            }
         }
     }
 }
