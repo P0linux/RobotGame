@@ -42,7 +42,7 @@ namespace RobotTests
 
             IEnumerator IEnumerable.GetEnumerator()
             {
-                throw new NotImplementedException();
+                return GetEnumerator();
             }
         }
     }

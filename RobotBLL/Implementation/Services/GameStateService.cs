@@ -79,7 +79,8 @@ namespace RobotBLL.Implementation.Services
             Field field = gameState.GameField;
             int x = coordinates.Item1;
             int y = coordinates.Item2;
-            gameState.PreviousStates.Push(field.DeepClone());
+            var clonedField = field.DeepClone();
+            gameState.PreviousStates.Push(clonedField);
             field.Cells[x, y].CurrentState = CellState.Robot;
             field.Cells[x, y].Cargo = null;
         }
