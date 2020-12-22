@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using RobotBLL.Abstraction;
+using RobotBLL.Implementation;
+using RobotBLL.Implementation.Services;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +17,29 @@ namespace RobotWPF
     /// </summary>
     public partial class App : Application
     {
+        private readonly ServiceProvider serviceProvider;
+        public App()
+        {
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+            serviceProvider = services.BuildServiceProvider();
+        }
+
+        private void ConfigureServices(IServiceCollection services)
+        {
+            services.AddTransient<IModel, Model>();
+            services.AddTransient<ViewModel, ViewModel>();
+            services.AddTransient<ICommandController, CommandController>();
+            services.AddTransient<IGameService, GameService>();
+            services.AddTransient<IPlayerService, PlayerService>();
+            services.AddTransient<IGameController, GameController>();
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            ViewModel viewModel = serviceProvider.GetService<ViewModel>();
+            new MainWindow { DataContext = viewModel };
+            MainWindow.Show();
+        }
     }
 }

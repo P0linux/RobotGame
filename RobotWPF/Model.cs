@@ -23,7 +23,7 @@ namespace RobotWPF
             
         }
 
-        public void CreateStates(GameStateModel gameModel, PlayerStateModel playerModel)
+        private void CreateStates(GameStateModel gameModel, PlayerStateModel playerModel)
         {
             var gameState = _stateMapper.Map(gameModel);
             _controller.CreateGameState(gameState);

@@ -22,20 +22,26 @@ namespace RobotWPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private string robotName;
         public string RobotName { get; set; }
 
         private RelayCommand startCommand;
 
         public RelayCommand StartCommand
         {
-            get { return startCommand ?? new RelayCommand(obj => StartGame()); }
+            get { return startCommand ?? (new RelayCommand(obj => StartGame())); }
         }
 
         private void StartGame()
         {
-            var playerModel = new PlayerStateModel(robotName);
+            var playerModel = new PlayerStateModel(RobotName);
             _model.StartGame(new GameStateModel(), playerModel);
+            OpenGameWindow();
+        }
+
+        private void OpenGameWindow()
+        {
+            GameWindow gameWindow = new GameWindow();
+            gameWindow.Show();
         }
     }
 }
