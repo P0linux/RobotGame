@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotTests", "RobotTest\Rob
 		{75BAF916-6644-4605-8A0C-69683F598D4E} = {75BAF916-6644-4605-8A0C-69683F598D4E}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWPF", "RobotWPF\RobotWPF.csproj", "{2D431510-28BD-4AB0-86EC-C1EE7A7CC7FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{694FF7DB-1D8E-4B2F-AA0B-AFAF62A07016}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{694FF7DB-1D8E-4B2F-AA0B-AFAF62A07016}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{694FF7DB-1D8E-4B2F-AA0B-AFAF62A07016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D431510-28BD-4AB0-86EC-C1EE7A7CC7FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D431510-28BD-4AB0-86EC-C1EE7A7CC7FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D431510-28BD-4AB0-86EC-C1EE7A7CC7FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D431510-28BD-4AB0-86EC-C1EE7A7CC7FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
