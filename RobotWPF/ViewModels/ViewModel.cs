@@ -37,18 +37,20 @@ namespace RobotWPF.ViewModels
         {
             var playerModel = new PlayerStateModel(RobotName);
             _model.StartGame(new GameStateModel(), playerModel);
-            OpenGameWindow();
+            UpdateField();
         }
 
-        private void OpenGameWindow()
+        private int[,] field;
+
+        public int[,] Field
         {
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is GameWindow)
-                {
-                    w.ShowDialog();
-                }
-            }
+            get => _model.GetField();
+            set => field = value;
+        }
+
+        private void UpdateField()
+        {
+            OnPropertyChanged("Field");
         }
     }
 }

@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RobotWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="419">
+        Title="MainWindow" Height="557" Width="859">
     <Grid>
-        <Label Content="Input robot name" HorizontalAlignment="Center" Height="34" Margin="0,62,0,0" VerticalAlignment="Top" Width="167" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Height="34" Margin="99,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="20" Text ="{Binding RobotName, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button Content="Start game" HorizontalAlignment="Left" Height="56" Margin="134,217,0,0" VerticalAlignment="Top" Width="162" FontSize="20" Command="{Binding StartCommand}"/>
+        <Label Content="Input robot name" HorizontalAlignment="Left" Height="34" Margin="22,17,0,0" VerticalAlignment="Top" Width="167" FontSize="20"/>
+        <TextBox HorizontalAlignment="Left" Height="34" Margin="215,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" FontSize="20" Text ="{Binding RobotName, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Content="Start game" HorizontalAlignment="Left" Height="37" Margin="504,14,0,0" VerticalAlignment="Top" Width="123" FontSize="20" Command="{Binding StartCommand}"/>
+        <DataGrid HorizontalAlignment="Left" Height="334" Margin="22,83,0,0" VerticalAlignment="Top" Width="502" ItemsSource="{Binding Field}"/>
 
     </Grid>
 </Window>

@@ -29,10 +29,8 @@ namespace RobotWPF
         private void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<MainWindow, MainWindow>();
-            services.AddTransient<GameWindow, GameWindow>();
             services.AddTransient<IModel, Model>();
             services.AddTransient<ViewModel, ViewModel>();
-            services.AddTransient<GameViewModel, GameViewModel>();
             services.AddTransient<ICommandController, CommandController>();
             services.AddTransient<IGameService, GameService>();
             services.AddTransient<IPlayerService, PlayerService>();
@@ -44,9 +42,6 @@ namespace RobotWPF
             ViewModel viewModel = serviceProvider.GetService<ViewModel>();
             new MainWindow { DataContext = viewModel };
             MainWindow.Show();
-
-            GameViewModel gameViewModel = serviceProvider.GetService<GameViewModel>();
-            new GameWindow() {DataContext = gameViewModel};
         }
     }
 }
