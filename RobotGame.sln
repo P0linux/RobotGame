@@ -12,8 +12,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobotTests", "RobotTest\Rob
 		{75BAF916-6644-4605-8A0C-69683F598D4E} = {75BAF916-6644-4605-8A0C-69683F598D4E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotWPF", "RobotWPF\RobotWPF.csproj", "{2D431510-28BD-4AB0-86EC-C1EE7A7CC7FC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
